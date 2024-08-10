@@ -1,0 +1,28 @@
+name = "cf-workers-fastapi"
+type = "javascript"
+compatibility_date = "2024-08-09"
+
+[build]
+command = "webpack"
+
+[build.upload]
+format = "service-worker"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+[[wasm_modules]]
+module = "pyodide.wasm"
+path = "./node_modules/pyodide/pyodide.asm.wasm"
+
+[[kv_namespaces]]
+binding = "MY_KV"
+id = "<your-kv-namespace-id>"
+
+[[d1_databases]]
+binding = "MY_D1"
+database_id = "<your-d1-database-id>"
+
+[r2_buckets]
+binding = "MY_R2"
+bucket_name = "<your-r2-bucket-name>"
